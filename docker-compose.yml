@@ -36,6 +36,9 @@ services:
       - hust-mirror
     volumes:
       - "./source:/source"
+    depends_on:
+      - db
+      - cache
 
 
 networks:
