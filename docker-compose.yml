@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  redis:
+    image: redis
+    container_name: "cache"
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./data:/data"
+    networks:
+      - hust-mirror
+
+  db:
+    image: postgres:12-alpine
+    container_name: "db"
+    restart: on-failure
+    environment:
+      POSTGRES_USER: hlug
+      POSTGRES_PASSWORD: hlug
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./data/db:/var/lib/postgresql/data"
+      - "./scripts/init.sql:/docker-entrypoint-initdb.d/create_tables.sql"
+    networks:
+      - hust-mirror
+
+  mirror:
+    image: mirror:latest
+    container_name: mirror
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    networks:
+      - hust-mirror
+
+networks:
+  hust-mirror:
