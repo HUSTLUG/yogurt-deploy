@@ -38,7 +38,7 @@ services:
       - "./source:/source"
     depends_on:
       - db
-      - cache
+      - redis
 
 
 networks:
