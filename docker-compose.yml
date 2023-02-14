@@ -27,13 +27,16 @@ services:
       - hust-mirror
 
   mirror:
-    image: mirror:latest
+    image: walawalawala/hust-mirror:latest
     container_name: mirror
     restart: on-failure
     ports:
       - "8080:8080"
     networks:
       - hust-mirror
+    volumes:
+      - "./mirror:/mirror"
+
 
 networks:
   hust-mirror:
