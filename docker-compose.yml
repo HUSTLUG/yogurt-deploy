@@ -44,5 +44,14 @@ services:
     environment:
       TZ: Asia/Shanghai
 
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: on-failure
+    ports:
+      - "8081:80"
+    volumes:
+      - "./source:/source"
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
 networks:
   hust-mirror:
