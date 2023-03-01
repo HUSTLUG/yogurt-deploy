@@ -46,7 +46,7 @@ services:
 
   nginx:
     image: nginx
-    container_name: nginx
+    container_name: hust-nginx
     restart: on-failure
     ports:
       - "8081:80"
