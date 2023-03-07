@@ -1,0 +1,49 @@
+# 数据库的配置信息
+db:
+  addr: postgres://hlug:hlug@db:5432/mirror?sslmode=disable
+#  addr: postgres://hlug:hlug@127.0.0.1:5432/mirror?sslmode=disable
+  driver: postgres
+
+# git相关配置，如果要开启git仓库同步的话需要git服务端具有push to create的功能
+git:
+  username: jiajunCheng
+  password: chengxin2002
+  addr: https://core.azw.net.cn:30000/git/
+
+# gin的相关配置
+api:
+  addr: ":8080" #运行地址
+
+# redis缓存配置
+redis:
+  addr: "redis:6379"
+  password: ""
+  db: ""
+  poolSize: ""
+
+# 使用了gin的jwt认证中间件
+auth:
+  secret-key: "opensource"
+  username: "admin"
+  password: "admin"
+
+# 日志配置信息
+log:
+  path: "/log"
+
+notify:
+  webHookURL: "https://hooks.slack.com/services/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"
+  Channel: "#bot-mirror-status"
+  IconEmoji: ":ghost:"
+  Username: "mirror"
+
+go:
+  addr: ":8081"
+
+post:
+  path: "/post"
+
+# 安全性控制
+security:
+  type: "ip"
+  ipRange: "127.0.0.1/0"
