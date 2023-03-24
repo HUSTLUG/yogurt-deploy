@@ -37,7 +37,7 @@ services:
     networks:
       - hust-mirror
     volumes:
-      - "../source:/source"
+      - "../demo:/source"
       - "./config.yaml:/mirror/config.yaml"
       - "./log:/log"
     depends_on:
