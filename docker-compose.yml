@@ -39,6 +39,7 @@ services:
     volumes:
       - "../source:/source"
       - "./config.yaml:/mirror/config.yaml"
+      - "./log:/log"
     depends_on:
       - db
       - redis
