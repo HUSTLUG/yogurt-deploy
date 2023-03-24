@@ -37,7 +37,7 @@ services:
     networks:
       - hust-mirror
     volumes:
-      - "../demo:/source"
+      - "../source:/source"
       - "./config.yaml:/mirror/config.yaml"
       - "./log:/log"
     depends_on:
@@ -53,7 +53,7 @@ services:
     ports:
       - "8081:80"
     volumes:
-      - "../demo:/source"
+      - "../source:/source"
       - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
 networks:
   hust-mirror:
