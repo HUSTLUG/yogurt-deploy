@@ -53,7 +53,7 @@ services:
     ports:
       - "8081:80"
     volumes:
-      - "../source:/source"
+      - "../demo:/source"
       - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
 networks:
   hust-mirror:
