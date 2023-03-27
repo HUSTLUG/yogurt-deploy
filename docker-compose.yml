@@ -55,5 +55,19 @@ services:
     volumes:
       - "../source:/source"
       - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+
+  caddy:
+    image: caddy
+    container_name: hust-caddy
+    restart: on-failure
+    ports:
+      - "30080:80"
+      - "30443:443"
+    volumes:
+      - "./caddy/ssl:/ssl"
+      - "./caddy/log:/log"
+      - "../source:/mirror"
+      - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
+        
 networks:
   hust-mirror:

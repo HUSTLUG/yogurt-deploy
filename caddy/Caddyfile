@@ -1,0 +1,12 @@
+repo.hlug.cn {
+        tls /ssl/repo.hlug.cn.cert.crt /ssl/repo.hlug.cn.key
+        root * /mirror
+        file_server browse
+        log {
+        output file /log/repo.hlug.cn/access.log {
+                roll_size 1gb
+                roll_keep 5
+                roll_keep_for 720h
+                }
+        }
+}
