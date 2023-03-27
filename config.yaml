@@ -47,3 +47,8 @@ post:
 security:
   type: "ip"
   ipRange: "127.0.0.1/0"
+
+# 关于域名的配置
+domain:
+  # 存储镜像的域名，或者设置为主机的ip地址
+  storage: "https://doc.hlug.cn/pages/"
