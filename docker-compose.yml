@@ -80,7 +80,7 @@ services:
     ports:
       - "873:873"
     volumes:
-      - ./rsyncd/:/config
+      - ./rsyncd:/config
       - ./log/rsyncd:/log
       - ../source:/data/mirror
 

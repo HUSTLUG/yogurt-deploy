@@ -10,14 +10,6 @@ mirror.hlug.cn {
 #               try_files {path} /index.html
                 file_server
         }
-
-        log {
-        output file /log/mirror.hlug.cn/access.log {
-                roll_size 1gb
-                roll_keep 5
-                roll_keep_for 720h
-                }
-        }
 }
 
 repo.hlug.cn {
