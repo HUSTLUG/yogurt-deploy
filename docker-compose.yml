@@ -28,9 +28,9 @@ services:
     networks:
       - hust-mirror
 
-  mirror:
+  backend:
     image: walawalawala/hust-mirror:latest
-    container_name: mirror
+    container_name: backend
     restart: on-failure
     ports:
       - "8080:8080"
@@ -39,35 +39,50 @@ services:
     volumes:
       - "../source:/source"
       - "./config.yaml:/mirror/config.yaml"
-      - "./log:/log"
+      - "./log/backend:/log"
     depends_on:
       - db
       - redis
     environment:
       TZ: Asia/Shanghai
 
-  nginx:
-    image: nginx
-    container_name: hust-nginx
-    restart: on-failure
-    ports:
-      - "8081:80"
-    volumes:
-      - "../source:/source"
-      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
-
-  caddy:
-    image: caddy
-    container_name: hust-caddy
-    restart: on-failure
+#  caddy:
+#    image: caddy
+#    container_name: hust-caddy
+#    restart: on-failure
+#    ports:
+#      - "30080:80"
+#      - "30443:443"
+#    volumes:
+#      - "./caddy/ssl:/ssl"
+#      - "./caddy/log:/log"
+#      - "../source:/mirror"
+#      - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
+#      -
+  frontend:
+    restart: always
+    image: hust-sync-frontend:latest
+    container_name: hust-sync-frontend
     ports:
       - "30080:80"
       - "30443:443"
     volumes:
-      - "./caddy/ssl:/ssl"
-      - "./caddy/log:/log"
-      - "../source:/mirror"
-      - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
-        
+      - ./caddy/ssl:/ssl
+      #- ./caddy/dist:/dist
+      - ./log/frontend:/log
+      - ../source:/mirror
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+
+  rsyncd:
+    restart: always
+    image: toendeavour/rsyncd-alpine
+    container_name: rsyncd
+    ports:
+      - "873:873"
+    volumes:
+      - ./rsyncd/:/config
+      - ./log/rsyncd:/log
+      - ../source:/data/mirror
+
 networks:
   hust-mirror:

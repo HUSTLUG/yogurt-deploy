@@ -7,6 +7,27 @@ repo.hlug.cn {
                 roll_size 1gb
                 roll_keep 5
                 roll_keep_for 720h
-                }
+        }
+}
 
+mirror.hlug.cn {
+        tls /ssl/mirror.hlug.cn.cert.crt /ssl/mirror.hlug.cn.key
+        encode zstd gzip
+        handle_path /api* {
+                reverse_proxy http://211.67.25.90:8080
+        }
+
+        handle {
+                root * /dist/page
+#               try_files {path} /index.html
+                file_server
+        }
+
+        log {
+        output file /log/mirror.hlug.cn/access.log {
+                roll_size 1gb
+                roll_keep 5
+                roll_keep_for 720h
+                }
+        }
 }
