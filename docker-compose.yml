@@ -46,19 +46,6 @@ services:
     environment:
       TZ: Asia/Shanghai
 
-#  caddy:
-#    image: caddy
-#    container_name: hust-caddy
-#    restart: on-failure
-#    ports:
-#      - "30080:80"
-#      - "30443:443"
-#    volumes:
-#      - "./caddy/ssl:/ssl"
-#      - "./caddy/log:/log"
-#      - "../source:/mirror"
-#      - "./caddy/Caddyfile:/etc/caddy/Caddyfile"
-#      -
   frontend:
     restart: always
     image: hust-sync-frontend:latest
@@ -72,6 +59,8 @@ services:
       - ./log/frontend:/log
       - ../source:/mirror
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - hust-mirror
 
   rsyncd:
     restart: always
