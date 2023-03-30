@@ -1,15 +1,3 @@
-repo.hlug.cn {
-        tls /ssl/repo.hlug.cn.cert.crt /ssl/repo.hlug.cn.key
-        root * /mirror
-        file_server browse
-        log {
-        output file /log/repo.hlug.cn/access.log {
-                roll_size 1gb
-                roll_keep 5
-                roll_keep_for 720h
-        }
-}
-
 mirror.hlug.cn {
         tls /ssl/mirror.hlug.cn.cert.crt /ssl/mirror.hlug.cn.key
         encode zstd gzip
@@ -31,3 +19,21 @@ mirror.hlug.cn {
                 }
         }
 }
+
+repo.hlug.cn {
+        tls /ssl/repo.hlug.cn.cert.crt /ssl/repo.hlug.cn.key
+        root * /mirror
+        file_server browse
+        log {
+        output file /log/repo.hlug.cn/access.log {
+                roll_size 1gb
+                roll_keep 5
+                roll_keep_for 720h
+                }
+
+}
+
+#hitokoto.hlug.cn {
+#       tls /ssl/hitokoto.hlug.cn.cert.crt /ssl/hitokoto.hlug.cn.key
+#       reverse_proxy http://hitokoto:80
+#}
