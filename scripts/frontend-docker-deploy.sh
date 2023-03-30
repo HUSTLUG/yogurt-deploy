@@ -9,7 +9,7 @@ docker build --force-rm -t hust-sync-frontend:latest -f ./Dockerfile .
 cd .. || exit 1
 rm -rf HUSTOpenSourceMirrorFrontEnd
 
-cd /home/azw/lightmirror-deploy || exit 1
+cd /home/azw/lightMirror-deploy || exit 1
 docker-compose up -d
 
 hust_sync_frontend_current_id=`docker images -q --filter reference=hust-sync-frontend:latest`
