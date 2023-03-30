@@ -1,3 +1,4 @@
+# shellcheck disable=SC2006
 hust_sync_original_id=`docker images -q --filter reference=hust-sync:latest`
 
 #git clone git@core.azw.net.cn:HUSTMirror/HUSTOpenSourceMirror.git

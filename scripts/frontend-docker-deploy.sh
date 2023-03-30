@@ -1,15 +1,15 @@
 hust_sync_frontend_original_id=`docker images -q --filter reference=hust-sync-frontend:latest`
 
 git clone git@core.azw.net.cn:HUSTMirror/HUSTOpenSourceMirrorFrontEnd.git
-cd HUSTOpenSourceMirrorFrontEnd
+cd HUSTOpenSourceMirrorFrontEnd || exit 1
 git switch main
 
 docker build --force-rm -t hust-sync-frontend:latest -f ./Dockerfile .
 
-cd ..
+cd .. || exit 1
 rm -rf HUSTOpenSourceMirrorFrontEnd
 
-cd /home/azw/hust-sync/drone-cd
+cd /home/azw/lightmirror-deploy || exit 1
 docker-compose up -d
 
 hust_sync_frontend_current_id=`docker images -q --filter reference=hust-sync-frontend:latest`
