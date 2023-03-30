@@ -59,6 +59,8 @@ services:
       - ./log/frontend:/log
       - ../source:/mirror
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+    environment:
+      DOC_URL: https://doc.hlug.cn/
     networks:
       - hust-mirror
 
