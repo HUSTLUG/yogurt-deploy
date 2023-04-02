@@ -26,7 +26,7 @@ repo.hlug.cn {
 }
 
 admin.hlug.cn {
-            tls /ssl/admin.hlug.cn.pem /ssl/repo.hlug.cn.key
+            tls /ssl/admin.hlug.cn.pem /ssl/admin.hlug.cn.key
             root * /dist/admin
             file_server browse
             log {
