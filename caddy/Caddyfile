@@ -25,6 +25,17 @@ repo.hlug.cn {
 
 }
 
+admin.hlug.cn {
+            tls /ssl/admin.hlug.cn.pem /ssl/repo.hlug.cn.key
+            root * /dist/admin
+            file_server browse
+            log {
+            output file /log/admin.hlug.cn/access.log {
+                    roll_size 1gb
+                    roll_keep 5
+                    roll_keep_for 720h
+            }
+}
 #hitokoto.hlug.cn {
 #       tls /ssl/hitokoto.hlug.cn.cert.crt /ssl/hitokoto.hlug.cn.key
 #       reverse_proxy http://hitokoto:80
