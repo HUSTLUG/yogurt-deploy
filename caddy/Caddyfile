@@ -29,6 +29,9 @@ admin.hlug.cn {
             tls /ssl/admin.hlug.cn.pem /ssl/admin.hlug.cn.key
             root * /dist/admin
             file_server browse
+            handle_path /api* {
+                    reverse_proxy http://backend:8080
+            }
             log {
             output file /log/admin.hlug.cn/access.log {
                     roll_size 1gb
