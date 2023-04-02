@@ -22,7 +22,7 @@ repo.hlug.cn {
                 roll_keep 5
                 roll_keep_for 720h
                 }
-
+        }
 }
 
 admin.hlug.cn {
@@ -35,6 +35,7 @@ admin.hlug.cn {
                     roll_keep 5
                     roll_keep_for 720h
             }
+    }
 }
 #hitokoto.hlug.cn {
 #       tls /ssl/hitokoto.hlug.cn.cert.crt /ssl/hitokoto.hlug.cn.key
