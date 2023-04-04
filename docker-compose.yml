@@ -29,7 +29,7 @@ services:
       - hust-mirror
 
   backend:
-    image: walawalawala/hust-mirror:latest
+    image: walawalawala/yogurt-backend:latest
     container_name: backend
     restart: on-failure
     ports:
