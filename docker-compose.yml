@@ -51,8 +51,8 @@ services:
     image: hust-sync-frontend:latest
     container_name: hust-sync-frontend
     ports:
-      - "30080:80"
-      - "30443:443"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./caddy/ssl:/ssl
       #- ./caddy/dist:/dist
