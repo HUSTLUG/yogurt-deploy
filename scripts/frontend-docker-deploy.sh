@@ -1,10 +1,10 @@
-hust_sync_frontend_original_id=`docker images -q --filter reference=hust-sync-frontend:latest`
+hust_sync_frontend_original_id=`docker images -q --filter reference=yogurt-frontend:latest`
 
 git clone git@core.azw.net.cn:HUSTMirror/HUSTOpenSourceMirrorFrontEnd.git
 cd HUSTOpenSourceMirrorFrontEnd || exit 1
 git switch main
 
-docker build --force-rm -t hust-sync-frontend:latest -f ./Dockerfile .
+docker build --force-rm -t yogurt-frontend:latest -f ./Dockerfile .
 
 cd .. || exit 1
 rm -rf HUSTOpenSourceMirrorFrontEnd
@@ -12,7 +12,7 @@ rm -rf HUSTOpenSourceMirrorFrontEnd
 cd /home/azw/lightMirror-deploy || exit 1
 docker-compose up -d
 
-hust_sync_frontend_current_id=`docker images -q --filter reference=hust-sync-frontend:latest`
+hust_sync_frontend_current_id=`docker images -q --filter reference=yogurt-frontend:latest`
 
 if [ "$hust_sync_frontend_original_id" = "$hust_sync_frontend_current_id" ]; then 
 	echo "No code changes, exiting..."; 

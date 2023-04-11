@@ -48,8 +48,8 @@ services:
 
   frontend:
     restart: always
-    image: hust-sync-frontend:latest
-    container_name: hust-sync-frontend
+    image:  walawalawala/yogurt-frontend:latest
+    container_name: frontend
     ports:
       - "30080:80"
       - "30443:443"
